@@ -1,0 +1,14 @@
+# VIM
+*.swp
+*.swo
+*.key
+
+
+*.DS_Store
+
+old/
+
+issuer/node_modules/
+claimer/node_modules/
+issuer/functions/node_modules/
+scan/node_modules/

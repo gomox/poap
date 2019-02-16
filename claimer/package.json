@@ -1,0 +1,39 @@
+{
+  "name": "claimer",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "clean": "yarn run clean-build-steps && rm -rf dist",
+    "tsc": "./node_modules/.bin/tsc",
+    "babel": "./node_modules/.bin/babel build-tsc --out-dir build-babel --source-maps",
+    "webpack": "webpack && cp -r public/* dist",
+    "clean-build-steps": "rm -rf build-tsc build-babel",
+    "serve": "node ./bin/www",
+    "start": "yarn run clean && yarn run tsc && yarn run babel && yarn run webpack && yarn run clean-build-steps && yarn run serve"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "typescript": "^3.2.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ethereumjs-abi": "^0.6.6",
+    "ethereumjs-tx": "^1.3.7",
+    "ethereumjs-util": "^6.1.0",
+    "express": "~4.16.0",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "web3": "1.0.0-beta.46"
+  }
+}
