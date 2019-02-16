@@ -7,13 +7,15 @@ const abi = require('ethereumjs-abi');
 
 var router = express.Router();
 
-const provider = new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/03e6ac0d84a343318212b133c9c8ce58");
+const provider = new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/5ab8f963ef7e4efdb7592aa1000597b8");
 const web3 = new Web3(provider);
 
 const account = '';
 const privateKey = Buffer.from('', 'hex');
 const contractAddress = '0xa1eb40c284c5b44419425c4202fa8dabff31006b';
 const tokenURI = "https://www.poap.xyz/events/jsons/14.json";
+
+let _nonce;
 
 const contract = new web3.eth.Contract(contractABI, contractAddress, {
   from: account,
@@ -55,12 +57,14 @@ router.post('/', async (req, res, next) => {
   const contractFunction = contract.methods.mintWithTokenURI(address, tokenURI);
   const functionAbi = contractFunction.encodeABI();
 
-  const _nonce = await web3.eth.getTransactionCount(account);
+  if(!_nonce) {
+    _nonce = await web3.eth.getTransactionCount(account);
+  }
   const nonce = _nonce.toString(16);
   console.log("Nonce: " + nonce);
 
   const txParams = {
-    gasPrice: '0x3B9ACA00',
+    gasPrice: '0x2540BE400',
     gasLimit: '0x7A120',
     to: contractAddress,
     data: functionAbi,
@@ -76,6 +80,8 @@ router.post('/', async (req, res, next) => {
   const serializedTx = tx.serialize();
 
   web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex'));
+
+  _nonce = _nonce + 1;
 
   res.status(200).send(tx.hash().toString('hex'));
 

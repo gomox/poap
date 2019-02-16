@@ -27,12 +27,12 @@ const cookieParser = require('cookie-parser')();
 const cors = require('cors')({origin: true});
 const app = express();
 
-const provider = new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/03e6ac0d84a343318212b133c9c8ce58");
+const provider = new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/5ab8f963ef7e4efdb7592aa1000597b8");
 const web3 = new Web3(provider);
 
 const account = '';
 const privateKey = Buffer.from('', 'hex');
-const contractAddress = '0x208e1b415053eda5333d7b89ecd440f682121906'; // Deployed manually
+const contractAddress = '0xa1eb40c284c5b44419425c4202fa8dabff31006b'; // Deployed manually
 const abi = contractABI;
 
 
@@ -95,7 +95,7 @@ const mint = (contract, nonce, address, uri) => {
     const functionAbi = contractFunction.encodeABI();
 
     const txParams = {
-      gasPrice: '0x3B9ACA00',
+      gasPrice: '0x2540BE400',
       gasLimit: '0x7A120',
       to: contractAddress,
       data: functionAbi,
@@ -125,7 +125,7 @@ app.use(cookieParser);
 app.use(validateFirebaseIdToken);
 app.use('/scan', express.static(path.join(__dirname, 'dist')))
 
-app.post('/mint', async (req,res, next) => {
+app.post('/mint', (req, res, next) => {
 
     const contract = new web3.eth.Contract(abi, contractAddress, {
       from: account,
@@ -135,23 +135,24 @@ app.post('/mint', async (req,res, next) => {
     var addresses=req.body.addresses;
     var uris=req.body.uris;
 
-    let nonce = await web3.eth.getTransactionCount(account);
+    web3.eth.getTransactionCount(account).then(nonce => {
 
-    let finalResponse = "";
-    addresses.forEach(address => {
-      if(web3.utils.isAddress(address)) {
-        uris.forEach(uri => {
-          nonce = nonce + 1;
-          const response = mint(contract, nonce, address.trim(), uri.trim());
-          finalResponse += ("0x" + response + "\n");
-        })
-      }
-      else {
-        finalResponse += "Invalid address " + address + "\n";
-      }
+      let finalResponse = "";
+      addresses.forEach(address => {
+        if(web3.utils.isAddress(address)) {
+          uris.forEach(uri => {
+            const response = mint(contract, nonce, address.trim(), uri.trim());
+            finalResponse += ("0x" + response + "\n");
+            nonce = nonce + 1;
+          })
+        }
+        else {
+          finalResponse += "Invalid address " + address + "\n";
+        }
+      });
+
+      res.send(finalResponse);
     });
-
-    res.send(finalResponse);
 
 });
 

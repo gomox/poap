@@ -1,7 +1,11 @@
-let address;
 const msgToSign = "I am rocking at EthDenver 2019";
 
-const updateAddress = (address: string) => {
+const updateAddress = async () => {
+  const web3 = (window as any).web3;
+  if(web3.ethereum && web3.ethereum.isMetaMask && (!web3.eth.accounts || web3.eth.accounts.length === 0)) {
+    await (window as any).ethereum.enable();
+  }
+  let address = web3.eth.accounts[0];
   document.getElementById("address").textContent = address;
 }
 
@@ -19,7 +23,8 @@ const claimBadge = async () => {
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onload = function () {
     if (this.status >= 200 && this.status < 300) {
-      (window as any).location.href = "https://poap-scan.firebaseapp.com/badges/badge/?address=" + address;
+      let address = web3.eth.accounts[0];
+      (window as any).location.href = "https://scan.poap.xyz/badges/badge/?address=" + address;
     } else {
       alert("Error:"+ xhr.statusText);
     }
@@ -33,6 +38,6 @@ const claimBadge = async () => {
 claimBadgeEl.onclick = claimBadge;
 
 window.addEventListener('load', async () => {
-   address = (window as any).web3.eth.accounts[0];
-   updateAddress(address);
+   updateAddress();
+   setInterval(updateAddress, 1000);
 })

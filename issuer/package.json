@@ -9,7 +9,7 @@
     "babel": "./node_modules/.bin/babel build-tsc --out-dir build-babel --source-maps",
     "webpack": "webpack && cp public/* functions/dist",
     "clean-build-steps": "rm -rf build-tsc build-babel",
-    "firebase": "firebase deploy --project poap-b8d8c",
+    "firebase": "firebase deploy --project poapadmin",
     "build": "yarn run clean && yarn run tsc && yarn run babel && yarn run webpack && yarn run clean-build-steps && yarn run firebase"
   },
   "devDependencies": {

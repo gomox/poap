@@ -23,7 +23,6 @@ function scan() {
   return false;
 }
 
-
 function post(addresses: string[], uris: string[]) {
 //  return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
