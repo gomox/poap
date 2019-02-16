@@ -130,9 +130,20 @@ const renderEvents = (events: any[]) => {
 
 }
 
+const renderTwitter = (address: string, event: any) => {
+  var t = document.getElementById( 'twitter-link' );
+  t.setAttribute("data-text", "Check out my badge shelf!");
+  t.setAttribute("data-url", "https://scan.poap.xyz/badges/badge/?address=" + address);
+  var script = document.createElement( 'script'  );
+  script.setAttribute("src", "https://platform.twitter.com/widgets.js");
+  t.parentNode.insertBefore(script, t.nextSibling );
+}
+
 window.addEventListener('load', async () => {
    const address = getAddress();
    updateAddress(address);
    const events = await getEvents(address);
    renderEvents(events);
+   renderTwitter(address, event);
+
  })

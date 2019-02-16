@@ -139,7 +139,7 @@ const renderEvent = (event: any) => {
 const renderTwitter = (tokenId: string, event: any) => {
   var t = document.getElementById( 'twitter-link' );
   t.setAttribute("data-text", "Look at my " + event.name +  " badge!");
-  t.setAttribute("data-url", "https://scan.poap.xyz/badges/badge/?address=" + tokenId);
+  t.setAttribute("data-url", "https://scan.poap.xyz/event/?tokenId=" + tokenId);
   var script = document.createElement( 'script'  );
   script.setAttribute("src", "https://platform.twitter.com/widgets.js");
   t.parentNode.insertBefore(script, t.nextSibling );
