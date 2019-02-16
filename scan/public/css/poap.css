@@ -5,6 +5,11 @@ header{
   color:#fff
 }
 
+
+header a{
+  font-size:1.3em;
+}
+
 header img.logo{
   width:5em;
   position:absolute;
@@ -48,7 +53,7 @@ ul.share{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content:space-evenly;
+  justify-content:flex-start;
 }
 
 ul.badges li{
@@ -88,6 +93,7 @@ button{
   box-sizing: border-box;
   cursor:pointer;
   margin:0.5em 0;
+    border-radius: 10px;
 }
 
 header a,
