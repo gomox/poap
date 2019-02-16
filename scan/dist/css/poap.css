@@ -1,8 +1,13 @@
 header{
   background:#72a9df;
-  border-bottom:3px solid #aaccee;
-  padding:1em 0;
+  border-top:3px solid #aaccee;
+  padding:1.2em 0;
   color:#fff
+}
+
+
+header a{
+  font-size:1.3em;
 }
 
 header img.logo{
@@ -16,6 +21,7 @@ section.center{
   text-align:center;
 }
 
+div.hidden,
 section.hidden{
   display:none;
 }
@@ -25,9 +31,9 @@ section.intro{
 }
 
 .divider{
-  background:#c7c7c7;
+  background:#eee;
   display:block;
-  padding:0.8em 0;
+  padding:0.6em 0;
   margin:1.5em 0;
 }
 
@@ -47,8 +53,13 @@ ul.share{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content:space-evenly;
+  justify-content:flex-start;
 }
+
+ul.share{
+  justify-content: space-between;
+}
+
 
 ul.badges li{
   padding:1em;
@@ -87,6 +98,7 @@ button{
   box-sizing: border-box;
   cursor:pointer;
   margin:0.5em 0;
+    border-radius: 10px;
 }
 
 header a,

@@ -27,7 +27,6 @@ const getTokenOwner = async (tokenId: string): Promise<string> => {
   else {
 
     const contract = (window as any).web3.eth.contract(abi).at(contractAddress);
-    console.log(tokenId)
     const owner: string = await new Promise((resolve, reject) => {
       contract.ownerOf(tokenId, (err, res) => {
         if(err) return reject();
@@ -40,6 +39,8 @@ const getTokenOwner = async (tokenId: string): Promise<string> => {
 
 const updateOwner = (owner: string) => {
   document.getElementById("owner").textContent = owner;
+  document.getElementById("owner").setAttribute("href", "https://scan.poap.xyz/badges/badge/?address=" + owner);
+
 }
 
 const getEvent = async (tokenId: string): Promise<any> => {
@@ -134,10 +135,21 @@ const renderEvent = (event: any) => {
   document.getElementById("event").innerHTML= rendered;
 }
 
+
+const renderTwitter = (tokenId: string, event: any) => {
+  var t = document.getElementById( 'twitter-link' );
+  t.setAttribute("data-text", "Look at my " + event.name +  "badge!");
+  t.setAttribute("data-url", "https://scan.poap.xyz/badges/badge/?address=" + tokenId);
+  var script = document.createElement( 'script'  );
+  script.setAttribute("src", "https://platform.twitter.com/widgets.js");
+  t.parentNode.insertBefore(script, t.nextSibling );
+}
+
 window.addEventListener('load', async () => {
    const tokenId = getTokenId();
    const owner = await getTokenOwner(tokenId);
    updateOwner(owner);
    const event = await getEvent(tokenId);
    renderEvent(event);
+   renderTwitter(tokenId, event);
  })
