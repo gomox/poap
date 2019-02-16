@@ -105,13 +105,15 @@ const searchBadge = async () => {
     const provider = new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/5ab8f963ef7e4efdb7592aa1000597b8");
     // @ts-ignore
     _web3 = new Web3(provider);
+    _web3.isAddress = _web3.utils.isAddress;
   }
   var ens = new ENS(_web3.currentProvider);
 
+  const isAddress = _web3.isAddress? _web3.isAddress : _web3.utils.isAddress;
+
   const address = document.getElementById('address');
   const value = (address as HTMLInputElement).value;
-  console.log(value);
-  if(_web3.isAddress(value)) {
+  if(isAddress(value)) {
     (window as any).location.href = "/badges/badge?address=" + value;
   }
   else{

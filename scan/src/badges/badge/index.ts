@@ -99,6 +99,9 @@ const renderEvent = (template: any, id: string, badges: any[]) => {
     });
     document.getElementById(id).innerHTML= rendered;
   }
+  else {
+    document.getElementById(id).style.display = "none";
+  }
 }
 
 const renderEvents = (events: any[]) => {
