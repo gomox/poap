@@ -1,7 +1,7 @@
 header{
   background:#72a9df;
   border-top:3px solid #aaccee;
-  padding:1em 0;
+  padding:1.2em 0;
   color:#fff
 }
 
@@ -26,9 +26,9 @@ section.intro{
 }
 
 .divider{
-  background:#c7c7c7;
+  background:#eee;
   display:block;
-  padding:0.8em 0;
+  padding:0.6em 0;
   margin:1.5em 0;
 }
 
