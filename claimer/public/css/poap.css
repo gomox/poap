@@ -56,6 +56,11 @@ ul.share{
   justify-content:flex-start;
 }
 
+ul.share{
+  justify-content: space-between;
+}
+
+
 ul.badges li{
   padding:1em;
 }
