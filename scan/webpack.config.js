@@ -2,11 +2,10 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  devtool: "source-map",
   entry: {
-    './bundle': ['babel-polyfill','./build-babel/index.js'],
-    './badges/badge/bundle': ['babel-polyfill','./build-babel/badges/badge/index.js'],
-    './event/bundle': ['babel-polyfill','./build-babel/event/index.js']
+    './bundle3': ['./build-tsc/index.js'],
+    './badges/badge/bundle3': ['./build-tsc/badges/badge/index.js'],
+    './event/bundle3': ['./build-tsc/event/index.js']
   },
   output: {
     filename: '[name].js',
