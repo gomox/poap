@@ -155,6 +155,49 @@ app.post('/mint', (req, res, next) => {
 
 });
 
+app.get('/badges', async (req, res, next) => {
+
+    var address=req.query.address;
+
+    const contract = new web3.eth.Contract(abi, contractAddress, {
+      from: account,
+      gasLimit: 3000000,
+    });
+
+    let events = [];
+    const tokensAmount = await contract.methods.balanceOf(address).call();
+    for(let i = 0; i < tokensAmount; i++) {
+      let tokenId = await contract.methods.tokenOfOwnerByIndex(address, i).call();
+      let uri = await contract.methods.tokenURI(tokenId).call();
+      events.push({
+        uri: uri,
+        tokenId: tokenId
+      });
+    }
+
+    res.send(events);
+});
+
+
+app.get('/token', async (req, res, next) => {
+
+    var id=req.query.id;
+
+    const contract = new web3.eth.Contract(abi, contractAddress, {
+      from: account,
+      gasLimit: 3000000,
+    });
+
+    const owner = await contract.methods.ownerOf(id).call();
+    const uri  = await contract.methods.tokenURI(id).call();
+
+    res.send({
+      owner: owner,
+      uri: uri
+    });
+});
+
+
 // This HTTPS endpoint can only be accessed by your Firebase Users.
 // Requests need to be authorized by providing an `Authorization` HTTP header
 // with value `Bearer <Firebase ID Token>`.
