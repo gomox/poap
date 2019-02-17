@@ -122,7 +122,6 @@ const mint = (contract, nonce, address, uri) => {
 
 app.use(cors);
 app.use(cookieParser);
-app.use(validateFirebaseIdToken);
 app.use('/scan', express.static(path.join(__dirname, 'dist')))
 
 app.post('/mint', (req, res, next) => {
