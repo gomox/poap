@@ -1,8 +1,4 @@
-import * as Web3 from 'web3';
 import * as Mustache from 'mustache';
-import * as abi from '../../../abi/poap.abi';
-
-const contractAddress = '0xa1eb40c284c5b44419425c4202fa8dabff31006b'; // Deployed manually
 
 const getAddress = (): string => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -15,54 +11,13 @@ const updateAddress = (address: string) => {
 
 const getEvents = async (address: string): Promise<any[]> => {
   const events: any[] = [];
-  let _web3 = (window as any).web3;
 
-  if(!_web3) {
-    // @ts-ignore
-    const provider = new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/5ab8f963ef7e4efdb7592aa1000597b8");
-    // @ts-ignore
-    _web3 = new Web3(provider);
-    const contract = new _web3.eth.Contract(abi, contractAddress, {});
-
-    // or sending and using a promise
-    const tokensAmount = await contract.methods.balanceOf(address).call();
-    for(let i = 0; i < tokensAmount; i++) {
-      let tokenId = await contract.methods.tokenOfOwnerByIndex(address, i).call();
-      let uri = await contract.methods.tokenURI(tokenId).call();
-      const event = await loadJSON(uri);
-      event.tokenId = tokenId;
-      event.uri = uri;
-      events.push(event);
-    }
-
-  }
-  else {
-    const contract = _web3.eth.contract(abi).at(contractAddress);
-
-    const tokensAmount = await new Promise((resolve, reject) => {
-     contract.balanceOf(address, (err, res) => {
-        if(err) return reject();
-        return resolve(res);
-      });
-    });
-    for(let i = 0; i < tokensAmount; i++) {
-       let tokenId = await new Promise((resolve, reject) => {
-       contract.tokenOfOwnerByIndex(address, i, (err, res) => {
-          if(err) return reject();
-          return resolve(res);
-        });
-      });
-      let uri: string = await new Promise((resolve, reject) => {
-       contract.tokenURI(tokenId, (err, res) => {
-          if(err) return reject();
-          return resolve(res);
-        });
-      });
-      const event = await loadJSON(uri);
-      event.tokenId = tokenId;
-      event.uri = uri;
-      events.push(event);
-    }
+  const eventList = await loadJSON("https://admin.poap.xyz/badges?address=" + address)
+  for(let i = 0; i < eventList.length; i++) {
+    const event = await loadJSON(eventList[i].uri);
+    event.tokenId = eventList[i].tokenId;
+    event.uri = eventList[i].uri;
+    events.push(event);
   }
   return events;
 }

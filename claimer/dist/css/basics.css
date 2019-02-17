@@ -19,7 +19,7 @@ section{
 }
 
 main{
-  padding:2em 0 3em;
+  padding:2em 0;
 }
 
 p{
@@ -41,7 +41,6 @@ h1, h2{
 }
 
 h1{
-    text-transform:uppercase;
     color:inherit;
     font-size:1.6em;
     line-height:1.2em;

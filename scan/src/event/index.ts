@@ -1,7 +1,5 @@
 
-import * as Web3 from 'web3';
 import * as Mustache from 'mustache';
-import * as abi from '../../abi/poap.abi';
 
 const contractAddress = '0xa1eb40c284c5b44419425c4202fa8dabff31006b'; // Deployed manually
 
@@ -10,69 +8,16 @@ const getTokenId = (): string => {
   return urlParams.get('tokenId');
 }
 
-const getTokenOwner = async (tokenId: string): Promise<string> => {
-  let _web3 = (window as any).web3;
-
-  if(!_web3) {
-    // @ts-ignore
-    const provider = new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/5ab8f963ef7e4efdb7592aa1000597b8");
-    // @ts-ignore
-    _web3 = new Web3(provider);
-    const contract = new _web3.eth.Contract(abi, contractAddress, {});
-
-    // or sending and using a promise
-    const owner = await contract.methods.ownerOf(tokenId).call();
-    return owner;
-
-  }
-  else {
-
-    const contract = (window as any).web3.eth.contract(abi).at(contractAddress);
-    const owner: string = await new Promise((resolve, reject) => {
-      contract.ownerOf(tokenId, (err, res) => {
-        if(err) return reject();
-        return resolve(res);
-      });
-    });
-    return owner;
-  }
-}
-
 const updateOwner = (owner: string) => {
   document.getElementById("owner").textContent = owner;
   document.getElementById("owner").setAttribute("href", "https://scan.poap.xyz/badges/badge/?address=" + owner);
 
 }
 
-const getEvent = async (tokenId: string): Promise<any> => {
-  let _web3 = (window as any).web3;
-
-  if(!_web3) {
-    // @ts-ignore
-    const provider = new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/5ab8f963ef7e4efdb7592aa1000597b8");
-    // @ts-ignore
-    _web3 = new Web3(provider);
-    const contract = new _web3.eth.Contract(abi, contractAddress, {});
-
-    // or sending and using a promise
-    const uri: string  = await contract.methods.tokenURI(tokenId).call();
-    const event = await loadJSON(uri);
-    event.uri = uri;
-    return event
-
-  }
-  else {
-    const contract = (window as any).web3.eth.contract(abi).at(contractAddress);
-    const uri: string = await new Promise((resolve, reject) => {
-    contract.tokenURI(tokenId, (err, res) => {
-        if(err) return reject();
-        return resolve(res);
-      });
-    });
-    const event = await loadJSON(uri);
-    event.uri = uri;
-    return event
-  }
+const getEvent = async (uri: string): Promise<any> => {
+  const event = await loadJSON(uri);
+  event.uri = uri;
+  return event
 }
 
 const loadJSON = async (uri: string): Promise<any> => {
@@ -136,7 +81,6 @@ const renderEvent = (event: any) => {
   document.getElementById("event").innerHTML= rendered;
 }
 
-
 const renderTwitter = (tokenId: string, event: any) => {
   var t = document.getElementById( 'twitter-link' );
   t.setAttribute("data-text", "Look at my " + event.name +  " badge!");
@@ -148,9 +92,9 @@ const renderTwitter = (tokenId: string, event: any) => {
 
 window.addEventListener('load', async () => {
    const tokenId = getTokenId();
-   const owner = await getTokenOwner(tokenId);
-   updateOwner(owner);
-   const event = await getEvent(tokenId);
+   const token = await loadJSON("https://admin.poap.xyz/token?id=" + tokenId)
+   updateOwner(token.owner);
+   const event = await getEvent(token.uri);
    renderEvent(event);
    renderTwitter(tokenId, event);
  })
