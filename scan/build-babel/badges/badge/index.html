@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>POAP: Proof of Attendance Protocol</title>
+    <meta name="description" content="">
+
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache"
+    <meta property="og:title" content="POAP: Proof of Attendance Protocol"/>
+    <meta property="og:description" content="POAP is a protocol for issuing and displaying cool crypto-badges built in the EthDenver 2019 hackathon." />
+    <meta property="og:url" content="https://scan.poap.xyz"/>
+    <meta property="og:site_name" content="POAP"/>
+
+    <!-- replace this with the imageName of the tokenId in case the user navigates on /event/ -->
+    <meta property="og:image" content="https://scan.poap.xyz/images/preview.jpg"/>
+
+    <meta name="twitter:title" content="POAP: Proof of Attendance Protocol">
+    <meta name="twitter:description" content="POAP is a protocol for issuing and displaying cool crypto-badges built in the EthDenver 2019 hackathon.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@poapxyz">
+    <meta name="twitter:creator" content="@poapxyz">
+
+    <!-- replace this with the imageName of the tokenId in case the user navigates on /event/ -->
+    <meta name="twitter:image" content="https://scan.poap.xyz/images/preview.jpg">
+
+    <meta itemprop="name" content="POAP: Proof of Attendance Protocol">
+    <meta itemprop="description" content="POAP is a protocol for issuing and displaying cool crypto-badges built in the EthDenver 2019 hackathon.">
+
+    <!-- replace this with the imageName of the tokenId in case the user navigates on /event/ -->
+    <meta itemprop="image" content="https://scan.poap.xyz/images/preview.jpg">
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="canonical" href="https://scan.poap.xyz" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="/css/basics.css">
+    <link rel="stylesheet" href="/css/poap.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+
+
+
+      <header>
+          <div class="wrap">
+            <a href="/">POAPscan</a>
+            <img class="logo" src="/images/poap.png">
+          </div>
+      </header>
+
+      <main>
+
+          <section class="welcome">
+            <div class="wrap">
+              <p>
+                Hey <b id="account">0x614A61a3b7F2fd8750AcAAD63b2a0CFe8B8524F1</b>
+              </p>
+              <p>
+                These are the events you have attended in the past.
+              </p>
+            </div>
+          </section>
+
+          <!-- loop years here -->
+          <section class="badges">
+            <!-- Example for an inactive year -->
+              <div class="divider">
+                <div class="wrap">
+                  <h3>2019</h3>
+                </div>
+              </div>
+              <div class="wrap">
+                <ul id="badges-2019" class="badges">
+                  <li>
+                  Loading...
+                  </li>
+                </ul>
+            </div>
+
+            <!-- Example for an active year -->
+            <div class="divider">
+              <div class="wrap">
+                <h3>2018</h3>
+              </div>
+            </div>
+            <div class="wrap">
+              <ul id="badges-2018" class="badges">
+                <li>
+                  Loading...
+                </li>
+              </ul>
+            </div>
+
+            <!-- Another Example for an active year -->
+            <div class="divider">
+              <div class="wrap">
+                <h3>2017</h3>
+              </div>
+            </div>
+            <div class="wrap">
+              <ul id="badges-2017" class="badges">
+                <li>
+                  Loading...
+                </li>
+              </ul>
+            </div>
+
+            <!-- Example for an inactive year -->
+              <div class="divider">
+                <div class="wrap">
+                  <h3>2016</h3>
+                </div>
+              </div>
+              <div class="wrap">
+                <ul id="badges-2016" class="badges">
+                    <li>
+                    Loading...
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Another Example for an active year -->
+            <div class="divider">
+              <div class="wrap">
+                <h3>2015</h3>
+              </div>
+            </div>
+            <div class="wrap">
+              <ul id="badges-2015" class="badges">
+                <li>
+                  Loading...
+                </li>
+              </ul>
+            </div>
+
+            <!-- Another Example for an inactive year -->
+              <div class="divider">
+                <div class="wrap">
+                  <h3>2014</h3>
+                </div>
+              </div>
+              <div class="wrap">
+                <ul id="badges-2014" class="badges">
+                    <li>
+                      Loading...
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="divider">
+              <div class="wrap">
+                <h3>Share on the interwebz</h3>
+              </div>
+            </div>
+            <div class="wrap">
+              <ul class="share">
+                <li>
+                  <a id="twitter-link"  href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Look at my badge!" data-url="https://scan.poap.xyz/event/?tokenId=" data-via="poapxyz" data-size="large" data-lang="en" data-show-count="false"></a>
+                </li>
+              </ul>
+            </div>
+
+          </section>
+
+      </main>
+
+      <footer>
+          <div class="wrap">
+            <p>
+              Powered by <a href="#">POAP</a><br>
+              An ETHDenver hack
+            </p>
+          </div>
+      </footer>
+
+     <script id="template" type="x-tmpl-mustache">
+     {{#badges}}
+     <li class=""><a href="{{url}}"><img src="{{image}}"></a></li>
+     {{/badges}}
+    </script>
+
+      <script src="./bundle3.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,133 @@
+header{
+  background:#72a9df;
+  border-top:3px solid #aaccee;
+  padding:1.2em 0;
+  color:#fff
+}
+
+
+header a{
+  font-size:1.3em;
+}
+
+header img.logo{
+  width:5em;
+  position:absolute;
+  right:0.5em;
+  top:-0.8em;
+}
+
+section.center{
+  text-align:center;
+}
+
+div.hidden,
+section.hidden{
+  display:none;
+}
+
+section.intro{
+  padding-bottom:3em;
+}
+
+.divider{
+  background:#eee;
+  display:block;
+  padding:0.6em 0;
+  margin:1.5em 0;
+}
+
+.wrap{
+  max-width:600px;
+  box-sizing: border-box;
+  padding:0 1em;
+  margin:0 auto;
+  position:relative;
+}
+
+ul.badges,
+ul.share{
+  list-style: none;
+  padding:0;
+  margin:0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+}
+
+ul.share{
+  justify-content: space-between;
+}
+
+
+ul.badges li{
+  padding:1em;
+}
+
+ul.share li i{
+  font-size:2em;
+  color:#72a9df;
+}
+
+ul.badges li img{
+  border-radius:50%;
+  border:1px solid #eee;
+  background:#72a9df;
+  width:6em;
+  height:6em;
+}
+
+ul.badges li .fas{
+  font-size:2.5em;
+  margin-right:0.5em;
+}
+
+footer{
+  text-align:center;
+  padding:2em 0 3em;
+  background:#aaccee;
+}
+
+button{
+  background:#72a9df;
+  color:#fff;
+  border:2px solid #aaccee;
+  font-size:2em;
+  padding:0.5em;
+  box-sizing: border-box;
+  cursor:pointer;
+  margin:0.5em 0;
+    border-radius: 10px;
+}
+
+header a,
+ul.share a,
+button a{
+    color:inherit;
+    text-decoration: none;
+}
+
+ul.share a:hover i{
+  color:#aaccee;
+}
+
+button small{
+  display:block;
+  font-size:0.5em;
+  padding:0.2em;
+}
+
+section.tokenHeader img{
+  border-radius:50%;
+  border:1px solid #eee;
+  background:#72a9df;
+  width:12em;
+  height:12em;
+  display: block;
+  margin:2em auto;
+}
+
+@media screen and (min-width : 700px) {
+
+}
