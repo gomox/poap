@@ -30,8 +30,8 @@ const app = express();
 const provider = new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/5ab8f963ef7e4efdb7592aa1000597b8");
 const web3 = new Web3(provider);
 
-const account = '0xe19d0E300a13919623720b84487d974a8FF8AAb6';
-const privateKey = Buffer.from('D65AE53A7247A3D12A1B79D421FDD3594D619B81A05E80F42C400A9DEF90AAA9', 'hex');
+const account = '';
+const privateKey = Buffer.from('', 'hex');
 const contractAddress = '0xa1eb40c284c5b44419425c4202fa8dabff31006b'; // Deployed manually
 const abi = contractABI;
 
