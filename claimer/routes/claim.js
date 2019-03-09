@@ -13,7 +13,7 @@ const web3 = new Web3(provider);
 const account = '0xe583f95bF95d0883F94EfE844442C8bfc9dd7A7F';
 const privateKey = Buffer.from('', 'hex');
 const contractAddress = '0xa1eb40c284c5b44419425c4202fa8dabff31006b';
-const tokenURI = "https://www.poap.xyz/events/jsons/14.json";
+const tokenURI = "https://www.poap.xyz/events/jsons/24.json";
 
 let _nonce;
 
@@ -27,7 +27,7 @@ let nextId;
 /* GET users listing. */
 router.post('/', async (req, res, next) => {
   var signature = req.body.signature;
-  const msg = "I am rocking at EthDenver 2019";
+  const msg = "I am rocking at EthParis 2019";
   const msgBuffer = ethjsutil.toBuffer(msg);
   const msgHash = ethjsutil.hashPersonalMessage(msgBuffer);
   const signatureBuffer = ethjsutil.toBuffer(signature);
