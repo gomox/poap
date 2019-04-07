@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>POAP: Proof of Attendance Protocol</title>
+    <meta name="description" content="POAP is a protocol for issuing and displaying cool crypto-badges built in the EthDenver 2019 hackathon.">
+
+    <meta property="og:title" content="POAP: Proof of Attendance Protocol"/>
+    <meta property="og:description" content="POAP is a protocol for issuing and displaying cool crypto-badges built in the EthDenver 2019 hackathon." />
+    <meta property="og:url" content="https://poap.xyz"/>
+    <meta property="og:site_name" content="POAP"/>
+    <meta property="og:image" content="https://poap.xyz/images/preview.jpg"/>
+
+    <meta name="twitter:title" content="POAP: Proof of Attendance Protocol">
+    <meta name="twitter:description" content="POAP is a protocol for issuing and displaying cool crypto-badges built in the EthDenver 2019 hackathon.">
+    <meta name="twitter:card" value="POAP - Proof of Attendance Protocol">
+    <meta name="twitter:site" content="@poapxyz">
+    <meta name="twitter:creator" content="@poapxyz">
+    <meta name="twitter:image" content="https://poap.xyz/images/preview.jpg">
+
+    <meta itemprop="name" content="POAP: Proof of Attendance Protocol">
+    <meta itemprop="description" content="POAP is a protocol for issuing and displaying cool crypto-badges built in the EthDenver 2019 hackathon.">
+    <meta itemprop="image" content="https://poap.xyz/images/preview.jpg">
+
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="canonical" href="https://xyz.io" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <link rel="stylesheet" href="/css/basics.css">
+    <link rel="stylesheet" href="/css/poap.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+
+
+
+      <header>
+          <div class="wrap">
+            <a href="/">POAPissuer</a>
+            <img class="logo" src="/images/poap.png">
+          </div>
+      </header>
+
+      <main>
+
+        <section class="eventsList">
+          <div class="wrap">
+            <h3>Select Events</h3>
+            <ul id="events" class="events">
+              <!-- Loop all events here -->
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/25.json" checked />
+                <label for="eventId1">EDCON Hackathon 2019</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/26.json" />
+                <label for="eventId1">EDCON 2019</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/27.json" />
+                <label for="eventId1">ETHCapetown 2019</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/24.json" />
+                <label for="eventId1">ETHParis 2019</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/23.json" />
+                <label for="eventId1">EthCC 2019</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/14.json" />
+                <label for="eventId1">ETHDenver 2019</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/1.json"/>
+                <label for="eventId1">DappCon 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/2.json"/>
+                <label for="eventId1">#DeFi Summit 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/3.json"/>
+                <label for="eventId1">DevCon1 2015</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/4.json"/>
+                <label for="eventId1">DevCon2 2016</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/5.json"/>
+                <label for="eventId1">DevCon3 2017</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/6.json"/>
+                <label for="eventId1">DevCon4 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/7.json"/>
+                <label for="eventId1">EDCON 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/8.json"/>
+                <label for="eventId1">ETHAtlanta 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/9.json"/>
+                <label for="eventId1">ETHBerlin 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/10.json"/>
+                <label for="eventId1">ETHBuenosAires 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/11.json"/>
+                <label for="eventId1">EthCC 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/12.json"/>
+                <label for="eventId1">ETHDenver 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/13.json"/>
+                <label for="eventId1">Aracon 2019</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/15.json"/>
+                <label for="eventId1">ETHIndia 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/16.json"/>
+                <label for="eventId1">ETHMemphis 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/17.json"/>
+                <label for="eventId1">ETHSanFrancisco 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/18.json"/>
+                <label for="eventId1">Nifty 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/19.json"/>
+                <label for="eventId1">RaveCon0 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/20.json"/>
+                <label for="eventId1">Token Wirtschaft 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/21.json"/>
+                <label for="eventId1">TruffleCon 2018</label>
+              </li>
+              <li>
+                <input type="checkbox" name="events" value="https://www.poap.xyz/events/jsons/22.json"/>
+                <label for="eventId1">Casa Bonita 2019</label>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="selectedEvents">
+          <video muted playsinline id="qr-video"></video>
+          <div class="wrap">
+            <h3>Addresses</h3>
+            <button class="startScanner"><a id="scan" href=""><small>Start Scanner</small></a></button>
+            <textarea id="address"></textarea>
+
+            <div class="center">
+              <button><a id="add" href="">Issue Event Tokens<small>for addresses in textarea</small></a></button>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+
+      <footer>
+          <div class="wrap">
+            <p>
+              Powered by <a href="https://poap.xyz">POAP</a><br>
+              An ETHDenver hack
+            </p>
+          </div>
+      </footer>
+
+      <script src="./bundle.js"></script>
+
+
+  </body>
+</html>

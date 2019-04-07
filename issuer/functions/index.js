@@ -124,6 +124,7 @@ app.use(cors);
 app.use(cookieParser);
 app.use('/scan', express.static(path.join(__dirname, 'dist')))
 
+
 app.post('/mint', (req, res, next) => {
 
     const contract = new web3.eth.Contract(abi, contractAddress, {
