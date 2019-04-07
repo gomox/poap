@@ -10,5 +10,6 @@ old/
 
 issuer/node_modules/
 claimer/node_modules/
+claimer/dist/
 issuer/functions/node_modules/
 scan/node_modules/
